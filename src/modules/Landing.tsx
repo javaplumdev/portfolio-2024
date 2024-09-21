@@ -13,7 +13,7 @@ const Landing = () => {
         <div>
           <Sidenav />
         </div>
-        <div className="py-24 flex flex-col space-y-24 w-full">
+        <div className="py-12 flex flex-col space-y-24 w-full">
           <About />
           <Experience />
           <Projects />
@@ -21,7 +21,7 @@ const Landing = () => {
 
           <div className="flex flex-col items-center w-full">
             <div className="mt-36">
-              <span>Made with heart by Charlito Jr Mecarez</span>
+              <span>Made with ❤️ by Charlito Jr Mecarez</span>
             </div>
           </div>
         </div>

@@ -1,9 +1,9 @@
 import React from 'react';
-import Image from 'next/image';
+import { RxLink2 } from 'react-icons/rx';
 
 const Experience = () => {
   return (
-    <div className="flex flex-col space-y-6 bg-purple-300">
+    <div id="experience" className="flex flex-col space-y-6 bg-purple-300 rounded-lg p-6">
       <span className="text-2xl font-semibold">Experience</span>
 
       <ol className="relative border-s border-black flex flex-col space-y-6">
@@ -32,8 +32,11 @@ const Experience = () => {
         </li>
       </ol>
 
-      <div className="px-4 py-6">
-        <span className="bg-slate-300 p-3">View full resume</span>
+      <div className="px-4 py-6 w-auto p-3 flex">
+        <div className="bg-slate-300 flex p-3 space-x-2">
+          <div>View full resume</div>
+          <RxLink2 size="22" />
+        </div>
       </div>
     </div>
   );

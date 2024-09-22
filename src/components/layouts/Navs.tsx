@@ -1,48 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
+import { cn } from '@/utils/classnames';
+import { sections } from '@/constants/navs';
+import useScrollPosition from '@/hooks/useScrollPosition';
+import { isEqual, toUpper } from 'lodash';
 
-const sections = ['about', 'experience', 'projects', 'contacts'];
+const Line = ({ isActive, section }: LineProps) => {
+  const lineClass = {
+    'w-16': isEqual(isActive, section),
+    'w-8': !isEqual(isActive, section),
+  };
 
-const Line = ({ isActive, section }: { isActive: string; section: string }) => {
-  return <div className={`w-12 h-0.5 ${isActive === section ? 'bg-black' : 'bg-red-300'}`}></div>;
+  return (
+    <div
+      className={cn(
+        'h-0.5 bg-white inline-block align-middle mr-4 transition-all duration-300 group-hover:w-16 group-hover:bg-white',
+        lineClass
+      )}
+    />
+  );
 };
 
 const Navs = () => {
-  const [activeSection, setActiveSection] = useState('');
-
-  // Function to detect which section is in view
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-    sections.forEach((section) => {
-      const element = document.getElementById(section);
-      if (element) {
-        const offsetTop = element.offsetTop;
-        const offsetBottom = offsetTop + element.offsetHeight;
-        if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-          setActiveSection(section);
-        }
-      }
-    });
-  };
-
-  useEffect(() => {
-    handleScroll();
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const { activeSection } = useScrollPosition();
 
   return (
     <React.Fragment>
       {sections.map((item) => {
         return (
-          <div className="flex items-center space-x-3">
+          <Link href={`#${item}`} className="group">
             <Line isActive={activeSection} section={item} />
-            <Link href={`#${item}`}>{item}</Link>
-          </div>
+            <span className="inline-block align-middle text-sm">{toUpper(item)}</span>
+          </Link>
         );
       })}
     </React.Fragment>

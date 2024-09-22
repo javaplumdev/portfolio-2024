@@ -7,7 +7,7 @@ import Header from './Header';
 
 const Sidenav = () => {
   return (
-    <div className="bg-blue-300 flex flex-col justify-between h-screen py-12 sticky top-0">
+    <div className="flex flex-col justify-between h-screen py-12 sticky top-0">
       <Header />
 
       {/* navigations */}

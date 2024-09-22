@@ -1,1 +1,1 @@
-export const ROUTE_PATH = ['#about', '#experience', '#projects', '#contacts'];
+export const sections = ['about', 'experience', 'projects', 'contacts'];
